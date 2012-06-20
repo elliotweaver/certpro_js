@@ -1,0 +1,70 @@
+body {
+  padding: 0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00B7FF;
+}
+ul li {
+    list-style-type: none;
+}
+.manage {
+    padding: 10px 0;
+}
+#content .inside {
+  padding: 20px;
+}
+table {}
+table thead {}
+table th {
+    background: -moz-linear-gradient(center top , #0088CC, #0055CC) repeat scroll 0 0 transparent;
+    color: #FFFFFF;
+}
+table tbody {}
+table tr {}
+table td {}
+.pager {
+  float: right;
+}
+.pager li {
+  margin-left: 10px;
+}
+.operations {
+    margin: 0;
+}
+.operations ul {
+    margin: 0;
+}
+.operations li {
+    display: inline-block;
+    margin-right: 5px;
+}
+.operations li a {}
+h1 {
+  padding: 10px 0;
+}
+h2 {}
+
+.btn-group ul {
+  margin: 10px 0;
+}
+#header {}
+#header .inside {
+    background: -moz-linear-gradient(center top , #0088CC, #0055CC) repeat scroll 0 0 transparent;
+}
+#header ul {}
+#header ul li {
+    display: inline-block;
+    list-style-type: none;
+    padding: 10px;
+}
+#header ul li a {
+    color: #FFFFFF;
+}
+.form {}
+.form .control-group {
+    margin: 10px 0;
+}
+.form .odd {
+
+}

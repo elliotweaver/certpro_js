@@ -1,0 +1,310 @@
+extends ../layout
+
+block content
+  h1= title
+  
+  ul
+    li
+      a(href='/admin/user') < back
+      
+  - if ('undefined' !== typeof errors && errors.length)
+    div.alert.alert-error
+      h3
+        | Errors
+      ul
+        li Please check the following errors
+        
+  form(action='', method='post', class='form-horizontal')
+    
+    input(name='_method', value='#{method}', type='hidden')
+    
+    h3
+      | User details
+    
+    fieldset
+      
+      // email
+      div(class=('undefined' !== typeof errors && errors.email) ? "email control-group error" : "email control-group") 
+        label(for='email', class='control-label') Email
+        .controls
+          input(type='text', name='email', placeholder='email', value=('undefined' !== typeof errors) ? errors.values.email : '')
+          - if ('undefined' !== typeof errors && errors.email)
+            span.help-inline
+              #{errors.email}    
+      
+      // firstname
+      div(class=('undefined' !== typeof errors && errors.firstname) ? "firstname control-group error" : "firstname control-group") 
+        label(for='firstname', class='control-label') First name
+        .controls
+          input(type='text', name='firstname', placeholder='first name', value=('undefined' !== typeof errors) ? errors.values.firstname : '')
+          - if ('undefined' !== typeof errors && errors.firstname)
+            span.help-inline
+              #{errors.firstname}
+      
+      // lastname
+      div(class=('undefined' !== typeof errors && errors.lastname) ? "lastname control-group error" : "lastname control-group") 
+        label(for='lastname', class='control-label') Last name
+        .controls
+          input(type='text', name='lastname', placeholder='last name', value=('undefined' !== typeof errors) ? errors.values.lastname : '')
+          - if ('undefined' !== typeof errors && errors.lastname)
+            span.help-inline
+              #{errors.lastname}
+      
+      // phone
+      div(class=('undefined' !== typeof errors && errors.phone) ? "phone control-group error" : "phone control-group") 
+        label(for='phone', class='control-label') Phone
+        .controls
+          input(type='text', name='phone', placeholder='phone', value=('undefined' !== typeof errors) ? errors.values.phone : '')
+          - if ('undefined' !== typeof errors && errors.phone)
+            span.help-inline
+              #{errors.phone}
+      
+      // dob
+      div(class=('undefined' !== typeof errors && errors.dob) ? "dob control-group error" : "dob control-group") 
+        label(for='dob', class='control-label') Date of birth
+        .controls
+          input(type='text', name='dob', placeholder='date of birth', value=('undefined' !== typeof errors) ? errors.values.dob : '')
+          - if ('undefined' !== typeof errors && errors.dob)
+            span.help-inline
+              #{errors.dob} 
+
+    
+    h3
+      | Password
+      
+    fieldset    
+    
+      // password
+      div(class=('undefined' !== typeof errors && errors.password) ? "password control-group error" : "password control-group") 
+        label(for='password', class='control-label') Password
+        .controls
+          input(type='password', name='password', placeholder='password', value=('undefined' !== typeof errors) ? errors.values.password : '')
+          - if ('undefined' !== typeof errors && errors.password)
+            span.help-inline
+              #{errors.password}  
+        
+      //password 2
+      div(class=('undefined' !== typeof errors && errors.password2) ? "password2 control-group error" : "password2 control-group") 
+        label(for='password2', class='control-label') Enter password again
+        .controls
+          input(type='password', name='password2', placeholder='password again', value=('undefined' !== typeof errors) ? errors.values.password2 : '')
+          - if ('undefined' !== typeof errors && errors.password2)
+            span.help-inline
+              #{errors.password2} 
+        
+    
+    h3
+      | Company details
+    
+    fieldset
+      
+      //company
+      div(class=('undefined' !== typeof errors && errors.company) ? "company control-group error" : "company control-group") 
+        label(for='company', class='control-label') Company
+        .controls
+          input(type='text', name='company', placeholder='company', value=('undefined' !== typeof errors) ? errors.values.company : '')
+          - if ('undefined' !== typeof errors && errors.company)
+            span.help-inline
+              #{errors.company}    
+      
+      // website
+      div(class=('undefined' !== typeof errors && errors.website) ? "website control-group error" : "website control-group") 
+        label(for='website', class='control-label') Website
+        .controls
+          input(type='text', name='website', placeholder='website', value=('undefined' !== typeof errors) ? errors.values.website : '')
+          - if ('undefined' !== typeof errors && errors.website)
+            span.help-inline
+              #{errors.website}    
+      
+      // address
+      div(class=('undefined' !== typeof errors && errors.address) ? "address control-group error" : "address control-group") 
+        label(for='address', class='control-label') Address
+        .controls
+          input(type='text', name='address', placeholder='address', value=('undefined' !== typeof errors) ? errors.values.address : '')
+          - if ('undefined' !== typeof errors && errors.address)
+            span.help-inline
+              #{errors.address}  
+      
+      // address 2
+      div(class=('undefined' !== typeof errors && errors.address2) ? "address2 control-group error" : "address2 control-group") 
+        label(for='address2', class='control-label') Address 2
+        .controls
+          input(type='text', name='address2', placeholder='address 2', value=('undefined' !== typeof errors) ? errors.values.address2 : '')
+          - if ('undefined' !== typeof errors && errors.address2)
+            span.help-inline
+              #{errors.address2} 
+      
+      // city
+      div(class=('undefined' !== typeof errors && errors.city) ? "city control-group error" : "city control-group") 
+        label(for='city', class='control-label') City
+        .controls
+          input(type='text', name='city', placeholder='city', value=('undefined' !== typeof errors) ? errors.values.city : '')
+          - if ('undefined' !== typeof errors && errors.city)
+            span.help-inline
+              #{errors.city}    
+      
+      // state
+      div(class=('undefined' !== typeof errors && errors.state) ? "state control-group error" : "state control-group") 
+        label(for='state', class='control-label') State
+        .controls
+          select(name='state')
+            option(value='AL') Alabama
+            option(value='AK') Alaska
+            option(value='AZ') Arizona
+            option(value='AR') Arkansas
+            option(value='CA') California
+            option(value='CO') Colorado
+            option(value='CT') Connecticut
+            option(value='DE') Delaware
+            option(value='DC') District Of Columbia
+            option(value='FL') Florida
+            option(value='GA') Georgia
+            option(value='HI') Hawaii
+            option(value='ID') Idaho
+            option(value='IL') Illinois
+            option(value='IN') Indiana
+            option(value='IA') Iowa
+            option(value='KS') Kansas
+            option(value='KY') Kentucky
+            option(value='LA') Louisiana
+            option(value='ME') Maine
+            option(value='MD') Maryland
+            option(value='MA') Massachusetts
+            option(value='MI') Michigan
+            option(value='MN') Minnesota
+            option(value='MS') Mississippi
+            option(value='MO') Missouri
+            option(value='MT') Montana
+            option(value='NE') Nebraska
+            option(value='NV') Nevada
+            option(value='NH') New Hampshire
+            option(value='NJ') New Jersey
+            option(value='NM') New Mexico
+            option(value='NY') New York
+            option(value='NC') North Carolina
+            option(value='ND') North Dakota
+            option(value='OH') Ohio
+            option(value='OK') Oklahoma
+            option(value='OR') Oregon
+            option(value='PA') Pennsylvania
+            option(value='RI') Rhode Island
+            option(value='SC') South Carolina
+            option(value='SD') South Dakota
+            option(value='TN') Tennessee
+            option(value='TX') Texas
+            option(value='UT') Utah
+            option(value='VT') Vermont
+            option(value='VA') Virginia
+            option(value='WA') Washington
+            option(value='WV') West Virginia
+            option(value='WI') Wisconsin
+            option(value='WY') Wyoming
+          - if ('undefined' !== typeof errors && errors.state)
+            span.help-inline
+              #{errors.state} 
+      
+      
+      // zip
+      div(class=('undefined' !== typeof errors && errors.zip) ? "zip control-group error" : "zip control-group") 
+        label(for='zip', class='control-label') Zip
+        .controls
+          input(type='text', name='zip', placeholder='zip', value=('undefined' !== typeof errors) ? errors.values.zip : '')
+          - if ('undefined' !== typeof errors && errors.zip)
+            span.help-inline
+              #{errors.zip} 
+        
+    h3
+      | Billing information
+    
+    fieldset
+      
+      // credit card number
+      div(class=('undefined' !== typeof errors && errors.cc_num) ? "cc_num control-group error" : "cc_num control-group") 
+        label(for='cc_num', class='control-label') Credit Card Number
+        .controls
+          input(type='text', name='cc_num', placeholder='', value=('undefined' !== typeof errors) ? errors.values.cc_num : '')
+          - if ('undefined' !== typeof errors && errors.cc_num)
+            span.help-inline
+              #{errors.cc_num}  
+      
+      // credit card month
+      div(class=('undefined' !== typeof errors && errors.cc_mon) ? "cc_mon control-group error" : "cc_mon control-group") 
+        label(for='cc_mon', class='control-label') Exp. Month
+        .controls
+          select(name='cc_mon')
+              option(value='01') 01
+              option(value='02') 02
+              option(value='03') 03
+              option(value='04') 04
+              option(value='05') 05
+              option(value='06') 06
+              option(value='07') 07
+              option(value='08') 08
+              option(value='09') 09
+              option(value='10') 10
+              option(value='11') 11
+              option(value='12') 12
+          - if ('undefined' !== typeof errors && errors.cc_mon)
+            span.help-inline
+              #{errors.cc_mon}  
+      
+      // credit card year
+      div(class=('undefined' !== typeof errors && errors.cc_year) ? "cc_year control-group error" : "cc_year control-group") 
+        label(for='cc_year', class='control-label') Exp. Year
+        .controls
+          select(name='cc_year')
+              option(value='2012') 2012
+              option(value='2013') 2013
+              option(value='2014') 2014
+              option(value='2015') 2015
+              option(value='2016') 2016
+              option(value='2017') 2017
+              option(value='2018') 2018
+              option(value='2019') 2019
+              option(value='2020') 2020
+              option(value='2021') 2021
+              option(value='2022') 2022
+              option(value='2023') 2023
+          - if ('undefined' !== typeof errors && errors.cc_year)
+            span.help-inline
+              #{errors.cc_year}   
+      
+      // security code
+      div(class=('undefined' !== typeof errors && errors.cc_sec) ? "cc_sec control-group error" : "cc_sec control-group") 
+        label(for='cc_sec', class='control-label') Security Code
+        .controls
+          input(type='text', name='cc_sec', value=('undefined' !== typeof errors) ? errors.values.cc_sec : '')
+          - if ('undefined' !== typeof errors && errors.cc_sec)
+            span.help-inline
+              #{errors.cc_sec}  
+      
+      
+      // billing zip
+      div(class=('undefined' !== typeof errors && errors.cc_zip) ? "cc_zip control-group error" : "cc_zip control-group") 
+        label(for='cc_zip', class='control-label') Billing ZIP
+        .controls
+          input(type='text', name='cc_zip', value=('undefined' !== typeof errors) ? errors.values.cc_zip : '')
+          - if ('undefined' !== typeof errors && errors.cc_zip)
+            span.help-inline
+              #{errors.cc_zip}    
+    
+    h3
+      | Terms & agreements
+      
+    fieldset
+      p
+        | lorem ipsum
+        | stuff here etc
+      
+      // terms
+      div(class=('undefined' !== typeof errors && errors.terms) ? "terms control-group error" : "terms control-group") 
+        .controls
+          input(type='checkbox', name='terms', value='agree')
+          | I agree to the 
+          a(href='/terms-of-service') Terms of Service
+          - if ('undefined' !== typeof errors && errors.terms)
+            span.help-inline
+              #{errors.terms} 
+        
+      .form-actions
+        button(type='submit', class="btn btn-primary") Add User

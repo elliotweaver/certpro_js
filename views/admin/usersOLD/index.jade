@@ -1,0 +1,62 @@
+extends ../layout
+
+block content
+  h1= title
+  
+  .btn-group
+    ul
+      li
+        a(href='/admin/user/add', class='btn') Add
+  
+  .pager
+    ul
+      - if (pager.previous)
+        li
+          a(href='#{pager.previous.link}') #{pager.previous.text}
+      - if (pager.next)
+        li
+          a(href='#{pager.next.link}') #{pager.next.text}
+  
+  .manage
+    table.table.table-bordered.table-striped
+      thead
+        th
+          | 
+        th
+          | email
+        th
+          | name
+        th
+          | created
+      tbody
+        
+        - if (!users.length)
+          tr
+            td(colspan=4, style='text-align: center')
+              | Add a 
+              a(href='/admin/users/add') User
+              | .
+        - else
+          each user in users
+            tr
+              td.operations
+                ul
+                  li
+                    a(href='/admin/users/#{user._id}') view
+                  li
+                    a(href='/admin/users/#{user._id}/edit') edit
+              td
+                #{user.email}
+              td
+                #{user.firstname} #{user.lastname}
+              td
+                #{user.created}
+              
+  .pager
+    ul
+      - if (pager.previous)
+        li
+          a(href='#{pager.previous.link}') #{pager.previous.text}
+      - if (pager.next)
+        li
+          a(href='#{pager.next.link}') #{pager.next.text}

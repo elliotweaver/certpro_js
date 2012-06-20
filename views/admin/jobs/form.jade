@@ -1,0 +1,43 @@
+extends ../layout
+
+include ../../mixins/forms
+include ../../mixins/menus
+include ../../mixins/tables
+
+block content
+  
+  h1= title
+  
+  mixin helpmenu_back('jobs')
+  
+  .form
+    form(action='', method='post', class='form-horizontal')
+      mixin method(method)
+      mixin csrf(token)
+      table.table.table-bordered.table-striped
+        mixin thead( [ 'Job' ] )
+        tbody
+          - if (method == 'put')
+            tr
+              td
+                mixin disabled('id', 'ID', session.form.values.id, session.form.errors.id, '')
+          tr
+            td
+              mixin input('text', 'name', 'Name', session.form.values.name, session.form.errors.name, '', true)
+          tr
+            td
+              - if (method == 'post')
+                mixin input('text', 'machine', 'Machine Name', session.form.values.machine, session.form.errors.machine, 'lowercase letters and underscores only')
+              - else
+                mixin disabled('machine', 'Machine Name', session.form.values.machine, session.form.errors.machine, 'not editable after creation')   
+          tr
+            td
+              mixin textarea('description', 'Description', session.form.values.description, session.form.errors.description, 'a short description of the job type')
+          tr
+            td
+              mixin input('text', 'price', 'Price', session.form.values.price, session.form.errors.price, 'the price for each lead generated under this job type')
+           tr
+            td
+              mixin input('text', 'categories', 'Categories', session.form.values.categories, session.form.errors.categories, 'comma separated list of categories')
+      mixin actions(method)
+            

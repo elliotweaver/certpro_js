@@ -1,0 +1,22 @@
+extends layout
+
+include ../mixins/forms
+include ../mixins/menus
+include ../mixins/tables
+
+block content
+  
+  .form
+    form(action='', method='post', class='form-horizontal')
+      mixin method('post')
+      mixin csrf(token)
+      table.table.table-bordered.table-striped
+        mixin thead( [ 'Login' ] )
+        tbody
+          tr
+            td
+              mixin input('text', 'email', 'Email', '', session.form.errors.email, '')
+          tr
+            td
+              mixin input('password', 'password', 'Password', '', session.form.errors.machine, '')
+      mixin actions('login')

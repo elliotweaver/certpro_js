@@ -1,0 +1,12 @@
+extends layout
+
+include ../mixins/forms
+
+block content
+  h1= title
+  
+  .form
+    form(action='', method='post', class='form-horizontal')
+      mixin csrf(token)
+      mixin method('delete')
+      mixin actions('delete')

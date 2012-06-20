@@ -1,0 +1,128 @@
+mixin input(type, name, label, value, error, help)
+  div(class=(error) ? "#{name} control-group error" : "#{name} control-group") 
+    label(for='#{name}', class='control-label') #{label}
+    .controls
+      input(type='#{type}', name='#{name}', placeholder='#{name}', value=('undefined' == value) ? '' : value)
+      - if (error)
+        span.help-inline
+          #{error}
+      - if (help)
+        span.help-block
+          #{help}
+          
+mixin disabled(name, label, value, error, help)
+  div(class=(error) ? "#{name} control-group error" : "#{name} control-group") 
+    label(for='#{name}', class='control-label') #{label}
+    .controls
+      span.uneditable-input
+        #{value}
+        input(type='hidden', name='#{name}', value=('undefined' == value) ? '' : value)
+        - if (error)
+          span.help-inline
+            #{error}
+        - if (help)
+          span.help-block
+            #{help}
+            
+mixin textarea(name, label, value, error, help)
+  div(class=(error) ? "#{name} control-group error" : "#{name} control-group") 
+    label(for='#{name}', class='control-label') #{label}
+    .controls
+      textarea(type='text', name='#{name}', placeholder='#{name}') #{('undefined' === typeof value) ? '' : value}
+      - if (error)
+        span.help-inline
+          #{error}
+      - if (help)
+        span.help-block
+          #{help}
+          
+mixin empty(label, text)
+  div(class="control-group") 
+    label(for='empty', class='control-label') #{label}
+    .controls
+      #{text}
+          
+mixin checkbox(name, label, check, value, error, help)
+  div(class=(error) ? "#{name} control-group error" : "#{name} control-group") 
+    label(for='#{name}', class='control-label') #{label}
+    .controls
+      - if (value == check)
+        input(type='checkbox', name='#{name}', value='#{check}', checked='checked')
+      - else
+        input(type='checkbox', name='#{name}', value='#{check}')
+      - if (error)
+        span.help-inline
+          #{error}
+      - if (help)
+        span.help-block
+          - if (help == 'agree')
+            | I agree to the 
+            a(href='/terms-of-service') terms of service
+          - else
+            #{help}
+            
+mixin checkbox_simple(name, label)
+  input(type='checkbox', name='#{name}', value='1') 
+  | &nbsp; 
+  #{label}
+
+mixin numbers(name, label, value, error, help, low, high)
+  div(class=(error) ? "#{name} control-group error" : "#{name} control-group") 
+    label(for='#{name}', class='control-label') #{label}
+    .controls
+      select(name='#{name}')
+        - var n;
+        - for (n = low; n <= high; n++) {
+          - if (value == n)
+            option(value='#{n}', selected="selected") #{n}
+          - else
+            option(value='#{n}') #{n}
+        - }
+      - if (error)
+        span.help-inline
+          #{error}
+      - if (help)
+        span.help-block
+          #{help}
+        
+mixin states(name, label, value, error, help)
+  div(class=(error) ? "#{name} control-group error" : "#{name} control-group") 
+    label(for='#{name}', class='control-label') #{label}
+    .controls
+      select(name='#{name}')
+        - var s = [{ n: 'AL', N: 'Alabama' }, { n: 'AK', N: 'Alaska' }, { n: 'AZ', N: 'Arizona' }, { n: 'AR', N: 'Arkansas' }, { n: 'CA', N: 'California' }, { n: 'CO', N: 'Colorado' }, { n: 'DE', N: 'Delaware' }, { n: 'DC', N: 'District Of Columbia' }, { n: 'FL', N: 'Florida' }, { n: 'GA', N: 'Georgia' }, { n: 'HI', N: 'Hawaii' }, { n: 'ID', N: 'Idaho' }, { n: 'IL', N: 'Illinois' }, { n: 'IN', N: 'Indiana' }, { n: 'IA', N: 'Iowa' }, { n: 'KS', N: 'Kansas' }, { n: 'KY', N: 'Kentucky' }, { n: 'LA', N: 'Louisiana' }, { n: 'ME', N: 'Maine' }, { n: 'MD', N: 'Maryland' }, { n: 'MI', N: 'Massachusetts' }, { n: 'MI', N: 'Michigan' }, { n: 'KN', N: 'Minnesota' }, { n: 'MS', N: 'Mississippi' }, { n: 'MO', N: 'Missouri' }, { n: 'MT', N: 'Montana' }, { n: 'NE', N: 'Nebraska' }, { n: 'NV', N: 'Nevada' }, { n: 'NH', N: 'New Hampshire' }, { n: 'NJ', N: 'New Jersey' }, { n: 'NM', N: 'New Mexico' }, { n: 'NY', N: 'New York' }, { n: 'ND', N: 'North Dakota' }, { n: 'OH', N: 'Ohio' }, { n: 'OK', N: 'Oklahoma' }, { n: 'OR', N: 'Oregon' }, { n: 'PA', N: 'Pennsylvania' }, { n: 'RI', N: 'Rhode Island' }, { n: 'SC', N: 'South Carolina' }, { n: 'SD', N: 'South Dakota' }, { n: 'TN', N: 'Tennessee' }, { n: 'TX', N: 'Texas' }, { n: 'UT', N: 'Utah' }, { n: 'VT', N: 'Vermont' }, { n: 'VA', N: 'Virginia' }, { n: 'WA', N: 'Washington' }, { n: 'WV', N: 'West Virginia' }, { n: 'WI', N: 'Wisconsin' }, { n: 'WY', N: 'Wyoming' }];
+        - for state in s        
+          - if (value == state.n)
+            option(value='#{state.n}', selected="selected") #{state.N}
+          - else
+            option(value='#{state.n}') #{state.N}
+      - if (error)
+        span.help-inline
+          #{error}
+      - if (help)
+        span.help-block
+          #{help}
+
+mixin method(type)
+  input(name='_method', value='#{type}', type='hidden')
+  
+mixin csrf(token)
+  input(name='_csrf', value='#{token}', type='hidden')
+  
+mixin actions(type)
+  fieldset    
+    .form-actions
+      - if (type == 'post')
+        button(type='submit', class="btn btn-primary") Add
+      - if (type == 'put')
+        button(type='submit', class="btn btn-primary") Save
+        a(href='delete', class='btn btn-danger', style='margin-left: 10px;') Delete
+      - if (type == 'delete')
+        button(type='submit', class="btn btn-danger") Yes
+        a(href='/admin', class='btn btn-primary', style='margin-left: 10px;') No
+      - if (type == 'login')
+        button(type='submit', class="btn btn-primary") Log me in!
+      - if (type == 'save')
+        button(type='submit', class="btn btn-primary") Save!
+      - if (type == 'signup')
+        button(type='submit', class="btn btn-primary") Sign me up!

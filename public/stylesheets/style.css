@@ -1,0 +1,160 @@
+body {
+  padding: 0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+p {
+    color: #777777;
+    font-family: 'Questrial',sans-serif;
+    font-size: 20px;
+    line-height: 25px;
+}
+
+a {
+  color: #00B7FF;
+}
+
+table {
+    width: 100%;
+}
+
+/*
+h1 {
+    background: none repeat scroll 0 0 #EEEEEE;
+    border-bottom: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    color: #838383;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    padding: 10px 20px;
+}
+*/
+h2 {
+    font-size: 25px;
+    line-height: 36px;
+    margin-top: 30px;
+    padding-bottom: 10px;
+}
+h3 {
+    font-size: 1.5em;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+h3:after {
+  content: ":";
+}
+.form {
+    padding: 20px;
+}
+.form .control-group {
+    margin: 10px 0;
+}
+table th {
+    background: -moz-linear-gradient(center top , #FFFFFF, #E6E6E6);
+    color: #000000;
+}
+
+
+/*
+fieldset {
+    background: none repeat scroll 0 0 #E8F4F6;
+    box-shadow: 0 0 2px #AAAAAA;
+    border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+*/
+#header {
+    background: url("../images/bg_top.png") repeat-x scroll 0 0 transparent;
+}
+#logo {
+    float: left;
+    margin-top: 11px;
+}
+#logo img {}
+#menu {
+    float: right;
+    margin-top: 45px;
+}
+#menu ul {}
+#menu ul li {
+    display: inline-block;
+    list-style-image: none;
+    list-style-type: none;
+    margin-left: 30px;
+}
+#menu ul li a {
+    color: #FFFFFF;
+    font-size: 1.2em;
+}
+#menu ul li a.active {}
+#menu ul li a:hover {}
+#content {}
+#content .inside {}
+#footer {
+    background: -moz-linear-gradient(center top , #FFFFFF, #E6E6E6);
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+}
+#footer .inside {
+    padding: 10px;
+}
+.steps {}
+.step {
+    background: none repeat scroll 0 0 #C7E76C;
+    border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    font-size: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 2px #888888;
+    -webkit-box-shadow: 0 0 2px #888888;
+    -moz-box-shadow: 0 0 2px #888888;
+}
+.steps .step1 {
+    background: none repeat scroll 0 0 #C7E76C;
+}
+.steps .step2 {
+    background: none repeat scroll 0 0 #B3CD68;
+}
+.steps .step3 {
+    background: none repeat scroll 0 0 #96A960;
+}
+.steps .step4 {
+    background: none repeat scroll 0 0 #AAD923;
+}
+.service-list {
+    background: none repeat scroll 0 0 #E8F4F6;
+    overflow: hidden;
+    padding: 20px;
+    margin: 30px 0;
+}
+.service-list .stage ul {
+    float: left;
+}
+.service-list .stage {
+    background: none repeat scroll 0 0 #888888;
+    border-radius: 10px 0 0 10px;
+    -webkit-border-radius: 10px 0 0 10px;
+    -moz-border-radius: 10px 0 0 10px;
+    color: #FFFFFF;
+    float: left;
+    overflow: hidden;
+    padding: 20px;
+    width: 520px;
+}
+.service-list .help {
+    background: none repeat scroll 0 0 #C7E76C;
+    border-radius: 0 10px 10px 0;
+    -webkit-border-radius: 0 10px 10px 0;
+    -moz-border-radius: 0 10px 10px 0;
+    float: right;
+    height: 280px;
+    padding: 20px;
+    width: 300px;
+}
+

@@ -1,0 +1,56 @@
+extends ../layout
+
+include ../../mixins/forms
+include ../../mixins/menus
+include ../../mixins/tables
+
+block content
+  
+  h1= title
+  
+  mixin helpmenu_back('requests')
+  
+  .form
+    form(action='', method='post', class='form-horizontal')
+      mixin method(method)
+      mixin csrf(token)
+      table.table.table-bordered.table-striped
+        mixin thead( [ 'Request' ] )
+        tbody
+          - if (method == 'put')
+            tr
+              td
+                mixin disabled('id', 'ID', session.form.values.id, session.form.errors.id, '')
+          tr
+            td
+              mixin input('text', 'job', 'Job', session.form.values.job, session.form.errors.job, '')
+          tr
+            td
+              mixin input('text', 'price', 'Price', session.form.values.price, session.form.errors.price, '')
+          - if (method == 'put')
+            tr
+              td
+                mixin disabled('location', 'Location', session.form.values.location, session.form.errors.location, '')
+          tr
+            td
+              mixin input('text', 'phone', 'Phone', session.form.values.phone, session.form.errors.phone, '')
+          tr
+            td
+              mixin input('text', 'name', 'Name', session.form.values.name, session.form.errors.name, '')
+          tr
+            td
+              mixin input('text', 'address', 'Address', session.form.values.address, session.form.errors.address, '')
+          tr
+            td
+              mixin input('text', 'address2', 'Address2', session.form.values.address2, session.form.errors.address2, '')
+          tr
+            td
+              mixin states('state', 'State', session.form.values.state, session.form.errors.state, '')
+          tr
+            td
+              mixin input('text', 'city', 'City', session.form.values.city, session.form.errors.city, '')
+          tr
+            td
+              mixin input('text', 'zip', 'Zip', session.form.values.zip, session.form.errors.zip, '')
+      mixin actions(method)
+            

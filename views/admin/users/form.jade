@@ -1,0 +1,132 @@
+extends ../layout
+
+include ../../mixins/forms
+include ../../mixins/menus
+include ../../mixins/tables
+
+block content
+  
+  h1= title
+  
+  mixin helpmenu_back('users')
+  
+  .form
+    form(action='', method='post', class='form-horizontal')
+      mixin method(method)
+      mixin csrf(token)
+      
+      - if (method == 'put')
+        table.table.table-bordered.table-striped
+          mixin thead( [ 'ID' ] )
+          tbody
+            tr
+              td
+                mixin disabled('id', 'ID', session.form.values.id, session.form.errors.id, '')
+      
+      table.table.table-bordered.table-striped
+        mixin thead( [ 'Login Details' ] )
+        tbody
+          - if (method == 'put') 
+            tr
+              td
+                mixin checkbox('login_update', 'Update Login', 'true', session.form.values.login_update, session.form.errors.login_update, 'Changes to the login details will only take effect if this is selected.')
+          tr
+            td
+              mixin input('text', 'email', 'Email', session.form.values.email, session.form.errors.email, '')
+          tr
+            td
+              mixin input('password', 'password', 'Password', '', session.form.errors.password, '') 
+          tr
+            td
+              mixin input('password', 'password2', 'Password Again', '', session.form.errors.password2, '') 
+      
+      table.table.table-bordered.table-striped
+        mixin thead( [ 'Contact' ] )
+        tbody
+          - if (method == 'put') 
+            tr
+              td
+                mixin checkbox('contact_update', 'Update Contact', 'true', session.form.values.contact_update, session.form.errors.contact_update, 'Changes to the contact information will only take effect if this is selected.')
+          tr
+            td
+              mixin input('text', 'firstname', 'First Name', session.form.values.firstname, session.form.errors.firstname, '')
+          tr
+            td
+              mixin input('text', 'lastname', 'Last Name', session.form.values.lastname, session.form.errors.lastname, '')
+          tr
+            td
+              mixin input('text', 'dob', 'Date of Birth', session.form.values.dob, session.form.errors.dob, '')
+          tr
+            td
+              mixin input('text', 'phone', 'Phone', session.form.values.phone, session.form.errors.phone, '') 
+              
+      table.table.table-bordered.table-striped
+        mixin thead( [ 'Company' ] )
+        tbody
+          - if (method == 'put') 
+            tr
+              td
+                mixin checkbox('company_update', 'Update Company', 'true', session.form.values.company_update, session.form.errors.company_update, 'Changes to the company details will only take effect if this is selected.')
+          tr
+            td
+              mixin input('text', 'company', 'Company Name', session.form.values.company, session.form.errors.company, '')
+          tr
+            td
+              mixin input('text', 'website', 'Website', session.form.values.website, session.form.errors.website, '')
+          - if (method == 'put')
+            tr
+              td
+                mixin disabled('location', 'Location', session.form.values.location, '', '')
+          tr
+            td
+              mixin input('text', 'address', 'Address', session.form.values.address, session.form.errors.address, '')
+          tr
+            td
+              mixin input('text', 'address2', 'Address 2', session.form.values.address2, session.form.errors.address2, '')
+          tr
+            td
+              mixin states('state', 'State', session.form.values.state, session.form.errors.state, '')
+          tr
+            td
+              mixin input('text', 'city', 'City', session.form.values.city, session.form.errors.city, '')
+          tr
+            td
+              mixin input('text', 'zip', 'Zip', session.form.values.zip, session.form.errors.zip, '')
+              
+      table.table.table-bordered.table-striped
+        mixin thead( [ 'Payment' ] )
+        tbody
+          - if (method == 'put') 
+            tr
+              td
+                mixin checkbox('cc_update', 'Update Credit Card', 'true', session.form.values.cc_update, session.form.errors.cc_update, 'Changes to the credit card details will only take effect if this is selected.')
+          - if (method == 'put')
+            tr
+              td
+                - var s = session.form.values.cc_type+' ending in '+session.form.values.cc_last4
+                mixin empty('Current Card', s)
+          tr
+            td
+              mixin input('text', 'cc_num', 'Credit Card Number', session.form.values.cc_num, session.form.errors.cc_num, '')
+          tr
+            td
+              mixin numbers('cc_mon', 'Exp. Month', session.form.values.cc_mon, session.form.errors.cc_mon, '', 1, 12)
+          tr
+            td
+              mixin numbers('cc_year', 'Exp. Year', session.form.values.cc_year, session.form.errors.cc_year, '', 2012, 2023)
+          tr
+            td
+              mixin input('text', 'cc_sec', 'Security Code', session.form.values.cc_sec, session.form.errors.cc_sec, '')
+          tr
+            td
+              mixin input('text', 'cc_zip', 'Zip Code', session.form.values.cc_zip, session.form.errors.cc_zip, '')
+              
+      table.table.table-bordered.table-striped
+        mixin thead( [ 'Terms & agreements' ] )
+        tbody
+          tr
+            td
+              mixin checkbox('agree', 'Terms of Service', 'agree', session.form.values.agree, session.form.errors.agree, 'agree')
+              
+      mixin actions(method)
+            

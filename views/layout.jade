@@ -1,0 +1,98 @@
+!!!
+html
+  head
+  
+    title= title
+    
+    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Questrial')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-responsive.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    
+    
+  body
+    
+    // header
+    #header.wrapper
+      .container
+        .row
+          .span12
+            .inside
+              
+              // logo
+              #logo
+                a(href='/')
+                  img(src='/images/logo.jpg')
+                  
+              #menu
+                ul
+                  li
+                    a(href='/') Home
+                  li
+                    a(href='/#how') How it works
+                  li
+                    a(href='/#who') Who We Are
+                  li
+                    a(href='/#faq') FAQ
+                  li
+                    a(href='/#contact') Contact
+                    
+    
+    #flash
+      .container
+        .row
+          .span12
+            .inside
+              
+              // alert
+              - if (session.flash.error.length)
+                div.alert.alert-error
+                  h3
+                    | Errors
+                  ul
+                    for alert in session.flash.error
+                      li #{alert}
+                      
+              // success
+              - if (session.flash.success.length)
+                div.alert.alert-success
+                  h3
+                    | Success
+                  ul
+                    for success in session.flash.success
+                      li #{success}
+              
+              // warning
+              - if (session.flash.warning.length)
+                div.alert
+                  h3
+                    | Warning
+                  ul
+                    for warning in session.flash.warning
+                      li #{warning}
+                      
+              // info
+              - if (session.flash.info.length)
+                div.alert.alert-info
+                  h3
+                    | Info
+                  ul
+                    for info in session.flash.info
+                      li #{info}
+    
+    // content
+    #content.wrapper
+      .container
+        .row
+          .span12
+            .inside
+              block content
+    
+    // footer
+    #footer.wrapper
+      .container
+        .row
+          .span12
+            .inside
+              | &copy; Copyright 2012. Certified Pro, Inc.
+              

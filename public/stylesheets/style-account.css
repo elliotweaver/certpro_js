@@ -1,0 +1,69 @@
+body {
+  padding: 0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00B7FF;
+}
+ul li {
+    list-style-type: none;
+}
+.manage {
+    padding: 10px 0;
+}
+table {}
+table thead {}
+table th {
+    background: -moz-linear-gradient(center top , #EE5F5B, #BD362F);
+    color: #FFFFFF;
+}
+table tbody {}
+table tr {}
+table td {}
+#content .inside {
+  padding: 20px;
+}
+.pager {
+  float: right;
+}
+.pager li {
+  margin-left: 10px;
+}
+.btn-group ul {
+  margin: 10px 0;
+}
+.operations {
+    margin: 0;
+}
+.operations ul {
+    margin: 0;
+}
+.operations li {
+    display: inline-block;
+    margin-right: 5px;
+}
+.operations li a {}
+h1, h2 {
+  padding: 10px 0;
+}
+h2 {}
+
+#header {}
+#header .inside {
+    background: -moz-linear-gradient(center top , #EE5F5B, #BD362F);
+}
+#header ul {}
+#header ul li {
+    display: inline-block;
+    list-style-type: none;
+    padding: 10px;
+}
+#header ul li a {
+    color: #FFFFFF;
+}
+.form .control-group {
+    margin: 10px 0;
+}
+.form .odd {
+
+}

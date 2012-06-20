@@ -1,0 +1,11 @@
+mixin helpmenu_add(Name, name)
+  .btn-group
+      ul
+        li
+          a(href='/admin/#{name}/add', class='btn') Add #{Name}
+          
+mixin helpmenu_back(name)
+  .btn-group
+      ul
+        li
+          a(href='/admin/#{name}', class='btn') &laquo; back

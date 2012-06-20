@@ -1,0 +1,90 @@
+!!!
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-responsive.css')
+    link(rel='stylesheet', href='/stylesheets/style-account.css')
+  body
+    
+    // header
+    #header
+      .container
+        .row
+          .span12
+            .inside
+              ul
+                li
+                  a(href='/account#leads') My Leads
+                li
+                  a(href='/account#login') My Login
+                li
+                  a(href='/account#contact') My Contact
+                li
+                  a(href='/account#company') My Company
+                li
+                  a(href='/account#specialties') My Specialties
+                li
+                  a(href='/account#billing') My Billing
+                li
+                  a(href='/logout') Logout
+    
+    #flash
+      .container
+        .row
+          .span12
+            .inside
+              
+              // alert
+              - if (session.flash.error.length)
+                div.alert.alert-error
+                  h3
+                    | Errors
+                  ul
+                    for alert in session.flash.error
+                      li #{alert}
+                      
+              // success
+              - if (session.flash.success.length)
+                div.alert.alert-success
+                  h3
+                    | Success
+                  ul
+                    for success in session.flash.success
+                      li #{success}
+              
+              // warning
+              - if (session.flash.warning.length)
+                div.alert
+                  h3
+                    | Warning
+                  ul
+                    for warning in session.flash.warning
+                      li #{warning}
+                      
+              // info
+              - if (session.flash.info.length)
+                div.alert.alert-info
+                  h3
+                    | Info
+                  ul
+                    for info in session.flash.info
+                      li #{info}
+
+    
+    // content
+    #content
+      .container
+        .row
+          .span12
+            .inside
+              block content
+            
+
+    // footer
+    #footer
+      .container
+        .row
+          .span12
+            .inside
+            

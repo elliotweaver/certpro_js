@@ -1,0 +1,23 @@
+extends ../layout
+
+include ../../mixins/forms
+include ../../mixins/tables
+include ../../mixins/menus
+
+block content
+  h1= title
+  
+  mixin helpmenu_add('Leads', 'leads')
+  
+  mixin pager(pager)
+  
+  table.table.table-bordered.table-striped
+    mixin thead([ '', 'id', 'request id', 'contractor id', 'updated' ])
+    tbody
+      - if (!rows.length)
+        mixin tr_empty('Leads', 'leads', 5)
+      - else
+        each row in rows
+          mixin tr_op( [ 'op', row._id, row.request, row.contractor, row.updated ], row, 'leads' )
+              
+  mixin pager(pager)

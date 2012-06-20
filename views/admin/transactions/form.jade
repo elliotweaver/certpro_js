@@ -1,0 +1,40 @@
+extends ../layout
+
+include ../../mixins/forms
+include ../../mixins/menus
+include ../../mixins/tables
+
+block content
+  
+  h1= title
+  
+  mixin helpmenu_back('transactions')
+  
+  .form
+    form(action='', method='post', class='form-horizontal')
+      mixin method(method)
+      mixin csrf(token)
+      table.table.table-bordered.table-striped
+        mixin thead( [ 'Transaction' ] )
+        tbody
+          - if (method == 'put')
+            tr
+              td
+                mixin disabled('id', 'ID', session.form.values.id, session.form.errors.id, '')
+          tr
+            td
+              mixin input('text', 'lead', 'Lead', session.form.values.lead, session.form.errors.lead, '')
+          tr
+            td
+              mixin input('text', 'job', 'Job', session.form.values.job, session.form.errors.job, '')
+          tr
+            td
+              mixin input('text', 'price', 'Price', session.form.values.price, session.form.errors.price, '')
+          tr
+            td
+              mixin input('text', 'contractor', 'contractor', session.form.values.contractor, session.form.errors.contractor, '')
+          tr
+            td
+              mixin input('text', 'payment', 'Payment', session.form.values.payment, session.form.errors.payment, '')
+      mixin actions(method)
+            

@@ -1,0 +1,23 @@
+extends ../layout
+
+include ../../mixins/forms
+include ../../mixins/tables
+include ../../mixins/menus
+
+block content
+  h1= title
+  
+  mixin helpmenu_add('Requests', 'requests')
+  
+  mixin pager(pager)
+  
+  table.table.table-bordered.table-striped
+    mixin thead([ '', 'id', 'job', 'name', 'city', 'state', 'updated' ])
+    tbody
+      - if (!rows.length)
+        mixin tr_empty('Requests', 'requests', 7)
+      - else
+        each row in rows
+          mixin tr_op( [ 'op', row._id, row.job, row.name, row.city, row.state, row.updated ], row, 'requests' )
+              
+  mixin pager(pager)

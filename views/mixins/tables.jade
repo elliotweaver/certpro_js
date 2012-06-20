@@ -1,0 +1,38 @@
+mixin pager(pager)
+  .pager
+    ul
+      - if (pager.previous)
+        li
+          a(href='#{pager.previous.link}') #{pager.previous.text}
+      - if (pager.next)
+        li
+          a(href='#{pager.next.link}') #{pager.next.text}
+          
+mixin thead(cols)
+  thead
+    - for col in cols
+      th
+        | #{col}
+
+mixin tr_op(cols, row, name)
+  tr
+    - for col in cols
+      td
+        - if (col == 'op')
+         .operations
+            a(href='/admin/#{name}/#{row._id}/edit') edit 
+            a(href='/admin/#{name}/#{row._id}/delete') delete
+        - else
+          #{col}
+
+mixin tr_empty(Name, name, cols)
+  tr
+    td(colspan='#{cols}', style='text-align: center')
+      | Add a 
+      a(href='/admin/#{name}/add') #{Name}
+      | .
+      
+mixin tr_empty_simple(text, cols)
+  tr
+    td(colspan='#{cols}', style='text-align: center')
+      #{text}

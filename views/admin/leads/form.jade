@@ -1,0 +1,31 @@
+extends ../layout
+
+include ../../mixins/forms
+include ../../mixins/menus
+include ../../mixins/tables
+
+block content
+  
+  h1= title
+  
+  mixin helpmenu_back('leads')
+  
+  .form
+    form(action='', method='post', class='form-horizontal')
+      mixin method(method)
+      mixin csrf(token)
+      table.table.table-bordered.table-striped
+        mixin thead( [ 'Lead' ] )
+        tbody
+          - if (method == 'put')
+            tr
+              td
+                mixin disabled('id', 'ID', session.form.values.id, session.form.errors.id, '')
+          tr
+            td
+              mixin input('text', 'request', 'Request', session.form.values.request, session.form.errors.request, 'request id', true)
+          tr
+            td
+              mixin input('text', 'contractor', 'Contractor', session.form.values.contractor, session.form.errors.contractor, 'contractor id', true) 
+      mixin actions(method)
+            
